@@ -1,5 +1,3 @@
-const express=require('express')
-const app=express()
 const data=[
     {
     "title": "Amy Schneider’s Jeopardy! Streak Ends at 40 Consecutive Wins and $1.4 Million",
@@ -27,12 +25,25 @@ const data=[
     "link": "https://time.com/6142718/we-need-new-national-covid-19-response-plan/"
     }
     ]
-app.get('/getTimeStories', (req, res)=>{
-    return res.send(data)
-})
-app.listen(2346, function (){
-    console.log("doulath")
-})
+    
+   data.map(function (e){
+    var div=document.createElement("div")
+    var div2=document.createElement("div")
+    var a=document.createElement("a")
+    a.setAttribute("href", e.link)
+    var a2=document.createElement("a")
+    a2.setAttribute("href", e.link)
+    div.setAttribute("id", "title")
+    div2.setAttribute("id", "titleLeft")
+    var h3=document.createElement("h3");
+    h3.textContent=e.title
+    var h3L=document.createElement("h3");
+    h3L.textContent=e.title
+    div.append(h3)
+    div2.append(h3L)
+    a.append(div)
+    a2.append(div2)
+    let bodyRight=document.querySelector("#bodyRight").append(a)
+    let bodyLeft=document.querySelector("#forgrid").append(a2)
 
-
-
+   })
